@@ -68,7 +68,7 @@ export default function WarungPOS() {
       return;
     }
     Alert.alert(
-      "Pembayaran Berhasil", 
+      "Pembayaran Berhasil",
       `Total yang dibayar: Rp${totalPrice.toLocaleString('id-ID')}\n\nTerima kasih telah berbelanja!`,
       [{ text: "OK", onPress: () => setCart([]) }] // Kosongkan keranjang setelah bayar
     );
@@ -83,10 +83,9 @@ export default function WarungPOS() {
         <View style={styles.productList}>
           {/* 4. Menerapkan Loop dengan .map() untuk Menu */}
           {products.map((item) => (
-            // Menerapkan key yang unik pada setiap iterasi
             <View key={item.id} style={styles.card}>
               <Image source={{ uri: item.image }} style={styles.productImage} />
-              
+
               <View style={styles.productInfo}>
                 <Text style={styles.productName}>{item.name}</Text>
                 {/* Menerapkan Inline Style */}
@@ -95,7 +94,7 @@ export default function WarungPOS() {
                 </Text>
               </View>
 
-              <Pressable 
+              <Pressable
                 style={styles.button}
                 onPress={() => handleBuy(item)}
               >
@@ -110,7 +109,7 @@ export default function WarungPOS() {
       {/* Bagian UI Keranjang (Menempel di Bawah) */}
       <View style={styles.cartContainer}>
         <Text style={styles.cartTitle}>Keranjang ({totalItems} item)</Text>
-        
+
         {/* Kondisi jika keranjang kosong */}
         {cart.length === 0 ? (
           <Text style={styles.emptyCartText}>Belum ada pesanan</Text>
@@ -123,7 +122,7 @@ export default function WarungPOS() {
                   <Text style={styles.cartItemName}>{item.name}</Text>
                   <Text style={styles.cartItemPrice}>Rp {(item.price * item.quantity).toLocaleString('id-ID')}</Text>
                 </View>
-                
+
                 {/* Tombol Plus dan Minus untuk kontrol pesanan */}
                 <View style={styles.quantityControl}>
                   <Pressable style={styles.qtyBtn} onPress={() => handleRemove(item.id)}>
@@ -145,9 +144,8 @@ export default function WarungPOS() {
             <Text style={styles.totalText}>Total Pembayaran:</Text>
             <Text style={styles.totalPrice}>Rp {totalPrice.toLocaleString('id-ID')}</Text>
           </View>
-          <Pressable 
-            // Jika keranjang kosong, ubah warna tombol menjadi abu-abu
-            style={[styles.checkoutBtn, cart.length === 0 && { backgroundColor: '#bdc3c7' }]} 
+          <Pressable
+            style={[styles.checkoutBtn, cart.length === 0 && { backgroundColor: '#bdc3c7' }]}
             onPress={handleCheckout}
           >
             <Text style={styles.checkoutBtnText}>Bayar</Text>
@@ -158,7 +156,8 @@ export default function WarungPOS() {
   );
 }
 
-// 5. Menerapkan External Styling menggunakan StyleSheet.create()
+
+// 5. Menerapkan Internal Styling menggunakan StyleSheet.create()
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
@@ -176,16 +175,16 @@ const styles = StyleSheet.create({
     color: '#2f3640',
   },
   productList: {
-    gap: 12, 
+    gap: 12,
   },
   card: {
     backgroundColor: '#ffffff',
     borderRadius: 12,
     padding: 12,
-    flexDirection: 'row', 
+    flexDirection: 'row',
     alignItems: 'center',
-    elevation: 3, 
-    shadowColor: '#000', 
+    elevation: 3,
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -197,7 +196,7 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   productInfo: {
-    flex: 1, 
+    flex: 1,
   },
   productName: {
     fontSize: 18,
@@ -215,7 +214,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
-  
+
   // ----- STYLES KHUSUS UNTUK KERANJANG -----
   cartContainer: {
     backgroundColor: '#fff',
